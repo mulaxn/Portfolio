@@ -1,3 +1,3 @@
 # Portfolio
 - Shajan Alam
-https://mulaxn.github.io/Portfolio/](https://mulaxn.github.io/Portfolioupdated/
+Your site is live at https://mulaxn.github.io/Portfolioupdated/
