@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    /* ONLY new styles for the secondary card */
+    .secondary-card {
+      position: absolute;
+      top: calc(50% + 150px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 10;
+    }
+    .secondary-card .noise {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+    }
+    .secondary-card .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+    .simple-portfolio-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      font-size: 16px;
+      backdrop-filter: blur(5px);
+    }
+    .simple-portfolio-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- COMPLETE NAVIGATION - ALL BUTTONS VISIBLE -->
+  <nav>
+    <a href="index.html">
+      <span class="label">Home</span>
+      <box-icon class="icon" name="home" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%"></rect>
+          <rect x="6" width="6" height="100%" y="-100%"></rect>
+          <rect x="12" width="6" height="100%" y="-100%"></rect>
+          <rect x="18" width="6" height="100%" y="-100%"></rect>
+          <rect x="24" width="6" height="100%" y="-100%"></rect>
+          <rect x="30" width="6" height="100%" y="-100%"></rect>
+          <rect x="36" width="6" height="100%" y="-100%"></rect>
+          <rect x="42" width="6" height="100%" y="-100%"></rect>
+          <rect x="48" width="6" height="100%" y="-100%"></rect>
+          <rect x="54" width="6" height="100%" y="-100%"></rect>
+          <rect x="60" width="6" height="100%" y="-100%"></rect>
+          <rect x="66" width="6" height="100%" y="-100%"></rect>
+          <rect x="72" width="6" height="100%" y="-100%"></rect>
+          <rect x="78" width="6" height="100%" y="-100%"></rect>
+          <rect x="84" width="6" height="100%" y="-100%"></rect>
+          <rect x="90" width="6" height="100%" y="-100%"></rect>
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%"></rect>
+          <rect x="6" width="6" height="100%" y="100%"></rect>
+          <rect x="12" width="6" height="100%" y="100%"></rect>
+          <rect x="18" width="6" height="100%" y="100%"></rect>
+          <rect x="24" width="6" height="100%" y="100%"></rect>
+          <rect x="30" width="6" height="100%" y="100%"></rect>
+          <rect x="36" width="6" height="100%" y="100%"></rect>
+          <rect x="42" width="6" height="100%" y="100%"></rect>
+          <rect x="48" width="6" height="100%" y="100%"></rect>
+          <rect x="54" width="6" height="100%" y="100%"></rect>
+          <rect x="60" width="6" height="100%" y="100%"></rect>
+          <rect x="66" width="6" height="100%" y="100%"></rect>
+          <rect x="72" width="6" height="100%" y="100%"></rect>
+          <rect x="78" width="6" height="100%" y="100%"></rect>
+          <rect x="84" width="6" height="100%" y="100%"></rect>
+          <rect x="90" width="6" height="100%" y="100%"></rect>
+        </g>
+      </svg>
+    </a>
+    <a href="projects.html">
+      <span class="label">Projects</span>
+      <box-icon class="icon" name="code-alt" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%"></rect>
+          <rect x="6" width="6" height="100%" y="-100%"></rect>
+          <rect x="12" width="6" height="100%" y="-100%"></rect>
+          <rect x="18" width="6" height="100%" y="-100%"></rect>
+          <rect x="24" width="6" height="100%" y="-100%"></rect>
+          <rect x="30" width="6" height="100%" y="-100%"></rect>
+          <rect x="36" width="6" height="100%" y="-100%"></rect>
+          <rect x="42" width="6" height="100%" y="-100%"></rect>
+          <rect x="48" width="6" height="100%" y="-100%"></rect>
+          <rect x="54" width="6" height="100%" y="-100%"></rect>
+          <rect x="60" width="6" height="100%" y="-100%"></rect>
+          <rect x="66" width="6" height="100%" y="-100%"></rect>
+          <rect x="72" width="6" height="100%" y="-100%"></rect>
+          <rect x="78" width="6" height="100%" y="-100%"></rect>
+          <rect x="84" width="6" height="100%" y="-100%"></rect>
+          <rect x="90" width="6" height="100%" y="-100%"></rect>
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%"></rect>
+          <rect x="6" width="6" height="100%" y="100%"></rect>
+          <rect x="12" width="6" height="100%" y="100%"></rect>
+          <rect x="18" width="6" height="100%" y="100%"></rect>
+          <rect x="24" width="6" height="100%" y="100%"></rect>
+          <rect x="30" width="6" height="100%" y="100%"></rect>
+          <rect x="36" width="6" height="100%" y="100%"></rect>
+          <rect x="42" width="6" height="100%" y="100%"></rect>
+          <rect x="48" width="6" height="100%" y="100%"></rect>
+          <rect x="54" width="6" height="100%" y="100%"></rect>
+          <rect x="60" width="6" height="100%" y="100%"></rect>
+          <rect x="66" width="6" height="100%" y="100%"></rect>
+          <rect x="72" width="6" height="100%" y="100%"></rect>
+          <rect x="78" width="6" height="100%" y="100%"></rect>
+          <rect x="84" width="6" height="100%" y="100%"></rect>
+          <rect x="90" width="6" height="100%" y="100%"></rect>
+        </g>
+      </svg>
+    </a>
+    <a href="aboutMe.html">
+      <span class="label">About</span>
+      <box-icon class="icon" name="user-circle" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%"></rect>
+          <rect x="6" width="6" height="100%" y="-100%"></rect>
+          <rect x="12" width="6" height="100%" y="-100%"></rect>
+          <rect x="18" width="6" height="100%" y="-100%"></rect>
+          <rect x="24" width="6" height="100%" y="-100%"></rect>
+          <rect x="30" width="6" height="100%" y="-100%"></rect>
+          <rect x="36" width="6" height="100%" y="-100%"></rect>
+          <rect x="42" width="6" height="100%" y="-100%"></rect>
+          <rect x="48" width="6" height="100%" y="-100%"></rect>
+          <rect x="54" width="6" height="100%" y="-100%"></rect>
+          <rect x="60" width="6" height="100%" y="-100%"></rect>
+          <rect x="66" width="6" height="100%" y="-100%"></rect>
+          <rect x="72" width="6" height="100%" y="-100%"></rect>
+          <rect x="78" width="6" height="100%" y="-100%"></rect>
+          <rect x="84" width="6" height="100%" y="-100%"></rect>
+          <rect x="90" width="6" height="100%" y="-100%"></rect>
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%"></rect>
+          <rect x="6" width="6" height="100%" y="100%"></rect>
+          <rect x="12" width="6" height="100%" y="100%"></rect>
+          <rect x="18" width="6" height="100%" y="100%"></rect>
+          <rect x="24" width="6" height="100%" y="100%"></rect>
+          <rect x="30" width="6" height="100%" y="100%"></rect>
+          <rect x="36" width="6" height="100%" y="100%"></rect>
+          <rect x="42" width="6" height="100%" y="100%"></rect>
+          <rect x="48" width="6" height="100%" y="100%"></rect>
+          <rect x="54" width="6" height="100%" y="100%"></rect>
+          <rect x="60" width="6" height="100%" y="100%"></rect>
+          <rect x="66" width="6" height="100%" y="100%"></rect>
+          <rect x="72" width="6" height="100%" y="100%"></rect>
+          <rect x="78" width="6" height="100%" y="100%"></rect>
+          <rect x="84" width="6" height="100%" y="100%"></rect>
+          <rect x="90" width="6" height="100%" y="100%"></rect>
+        </g>
+      </svg>
+    </a>
+    <a href="contactMe.html">
+      <span class="label">Contact</span>
+      <box-icon class="icon" name="envelope" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%"></rect>
+          <rect x="6" width="6" height="100%" y="-100%"></rect>
+          <rect x="12" width="6" height="100%" y="-100%"></rect>
+          <rect x="18" width="6" height="100%" y="-100%"></rect>
+          <rect x="24" width="6" height="100%" y="-100%"></rect>
+          <rect x="30" width="6" height="100%" y="-100%"></rect>
+          <rect x="36" width="6" height="100%" y="-100%"></rect>
+          <rect x="42" width="6" height="100%" y="-100%"></rect>
+          <rect x="48" width="6" height="100%" y="-100%"></rect>
+          <rect x="54" width="6" height="100%" y="-100%"></rect>
+          <rect x="60" width="6" height="100%" y="-100%"></rect>
+          <rect x="66" width="6" height="100%" y="-100%"></rect>
+          <rect x="72" width="6" height="100%" y="-100%"></rect>
+          <rect x="78" width="6" height="100%" y="-100%"></rect>
+          <rect x="84" width="6" height="100%" y="-100%"></rect>
+          <rect x="90" width="6" height="100%" y="-100%"></rect>
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%"></rect>
+          <rect x="6" width="6" height="100%" y="100%"></rect>
+          <rect x="12" width="6" height="100%" y="100%"></rect>
+          <rect x="18" width="6" height="100%" y="100%"></rect>
+          <rect x="24" width="6" height="100%" y="100%"></rect>
+          <rect x="30" width="6" height="100%" y="100%"></rect>
+          <rect x="36" width="6" height="100%" y="100%"></rect>
+          <rect x="42" width="6" height="100%" y="100%"></rect>
+          <rect x="48" width="6" height="100%" y="100%"></rect>
+          <rect x="54" width="6" height="100%" y="100%"></rect>
+          <rect x="60" width="6" height="100%" y="100%"></rect>
+          <rect x="66" width="6" height="100%" y="100%"></rect>
+          <rect x="72" width="6" height="100%" y="100%"></rect>
+          <rect x="78" width="6" height="100%" y="100%"></rect>
+          <rect x="84" width="6" height="100%" y="100%"></rect>
+          <rect x="90" width="6" height="100%" y="100%"></rect>
+        </g>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- Gradient background -->
+  <div class="gradient-bg">
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
+      <filter id="noiseFilterBg">
+        <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+      </filter>
+      <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="gradients-container">
+      <div class="g1"></div>
+      <div class="g2"></div>
+      <div class="g3"></div>
+      <div class="g4"></div>
+      <div class="g5"></div>
+      <div class="interactive"></div>
+    </div>
+  </div>
+
+  <!-- Original welcome card -->
+  <div class="card">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="noise">
+      <filter id="noiseFilter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="6" stitchTiles="stitch" />
+      </filter>
+      <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilter)" />
+    </svg>
+    <div class="content">
+      <h1>WELCOME</h1>
+      <p>TO SHAJAN'S PORTFOLIO</p>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>

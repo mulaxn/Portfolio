@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <!-- Boxicons -->
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    /* Override background circle colors for About Me page */
+    :root {
+      /* Background gradient (adjust as needed) */
+      --color-bg1: rgb(30, 10, 10);
+      --color-bg2: rgb(50, 30, 30);
+
+      /* Red gradient for animated elements */
+      --color1: 255, 200, 200;  /* Light red/pink */
+      --color2: 255, 150, 150;  /* Soft red */
+      --color3: 255, 125, 125;  /* Medium red */
+      --color4: 255, 100, 100;  /* Deeper red */
+      --color5: 255, 80, 80;    /* Dark red */
+
+      /* Interactive element color (red variant) */
+      --color-interactive: 255, 180, 180;
+      
+      /* Other settings */
+      --circle-size: 80%;
+      --blending: hard-light;
+    }
+
+    /* Floating text container */
+    .floating-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 800px;
+      color: white;
+      font-family: 'Courier New', monospace;
+      line-height: 1.6;
+      z-index: 10;
+      padding: 20px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .typing-title {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffaaaa;
+      text-align: center;
+      border-bottom: 2px solid #ff6666;
+      padding-bottom: 10px;
+    }
+
+    .typing-content {
+      min-height: 100px;
+    }
+
+    .typing-line {
+      margin-bottom: 15px;
+      opacity: 0;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: #ff6666;
+      margin-left: 5px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .highlight {
+      color: #ffaaaa;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(255, 80, 80, 0.7);
+    }
+
+    /* Social links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 2rem;
+      transition: transform 0.3s, color 0.3s;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .social-links a:hover {
+      color: #ffaaaa;
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay for transition -->
+  <div class="overlay"></div>
+
+  <!-- Navigation fixed at the top center -->
+  <nav>
+    <a href="index.html">
+      <span class="label">Home</span>
+      <box-icon class="icon" name="home" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%" />
+          <rect x="6" width="6" height="100%" y="-100%" />
+          <rect x="12" width="6" height="100%" y="-100%" />
+          <rect x="18" width="6" height="100%" y="-100%" />
+          <rect x="24" width="6" height="100%" y="-100%" />
+          <rect x="30" width="6" height="100%" y="-100%" />
+          <rect x="36" width="6" height="100%" y="-100%" />
+          <rect x="42" width="6" height="100%" y="-100%" />
+          <rect x="48" width="6" height="100%" y="-100%" />
+          <rect x="54" width="6" height="100%" y="-100%" />
+          <rect x="60" width="6" height="100%" y="-100%" />
+          <rect x="66" width="6" height="100%" y="-100%" />
+          <rect x="72" width="6" height="100%" y="-100%" />
+          <rect x="78" width="6" height="100%" y="-100%" />
+          <rect x="84" width="6" height="100%" y="-100%" />
+          <rect x="90" width="6" height="100%" y="-100%" />
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%" />
+          <rect x="6" width="6" height="100%" y="100%" />
+          <rect x="12" width="6" height="100%" y="100%" />
+          <rect x="18" width="6" height="100%" y="100%" />
+          <rect x="24" width="6" height="100%" y="100%" />
+          <rect x="30" width="6" height="100%" y="100%" />
+          <rect x="36" width="6" height="100%" y="100%" />
+          <rect x="42" width="6" height="100%" y="100%" />
+          <rect x="48" width="6" height="100%" y="100%" />
+          <rect x="54" width="6" height="100%" y="100%" />
+          <rect x="60" width="6" height="100%" y="100%" />
+          <rect x="66" width="6" height="100%" y="100%" />
+          <rect x="72" width="6" height="100%" y="100%" />
+          <rect x="78" width="6" height="100%" y="100%" />
+          <rect x="84" width="6" height="100%" y="100%" />
+          <rect x="90" width="6" height="100%" y="100%" />
+        </g>
+      </svg>
+    </a>
+    <a href="projects.html">
+      <span class="label">Projects</span>
+      <box-icon class="icon" name="code-alt" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%" />
+          <rect x="6" width="6" height="100%" y="-100%" />
+          <rect x="12" width="6" height="100%" y="-100%" />
+          <rect x="18" width="6" height="100%" y="-100%" />
+          <rect x="24" width="6" height="100%" y="-100%" />
+          <rect x="30" width="6" height="100%" y="-100%" />
+          <rect x="36" width="6" height="100%" y="-100%" />
+          <rect x="42" width="6" height="100%" y="-100%" />
+          <rect x="48" width="6" height="100%" y="-100%" />
+          <rect x="54" width="6" height="100%" y="-100%" />
+          <rect x="60" width="6" height="100%" y="-100%" />
+          <rect x="66" width="6" height="100%" y="-100%" />
+          <rect x="72" width="6" height="100%" y="-100%" />
+          <rect x="78" width="6" height="100%" y="-100%" />
+          <rect x="84" width="6" height="100%" y="-100%" />
+          <rect x="90" width="6" height="100%" y="-100%" />
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%" />
+          <rect x="6" width="6" height="100%" y="100%" />
+          <rect x="12" width="6" height="100%" y="100%" />
+          <rect x="18" width="6" height="100%" y="100%" />
+          <rect x="24" width="6" height="100%" y="100%" />
+          <rect x="30" width="6" height="100%" y="100%" />
+          <rect x="36" width="6" height="100%" y="100%" />
+          <rect x="42" width="6" height="100%" y="100%" />
+          <rect x="48" width="6" height="100%" y="100%" />
+          <rect x="54" width="6" height="100%" y="100%" />
+          <rect x="60" width="6" height="100%" y="100%" />
+          <rect x="66" width="6" height="100%" y="100%" />
+          <rect x="72" width="6" height="100%" y="100%" />
+          <rect x="78" width="6" height="100%" y="100%" />
+          <rect x="84" width="6" height="100%" y="100%" />
+          <rect x="90" width="6" height="100%" y="100%" />
+        </g>
+      </svg>
+    </a>
+    <a href="aboutMe.html">
+      <span class="label">About</span>
+      <box-icon class="icon" name="user-circle" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%" />
+          <rect x="6" width="6" height="100%" y="-100%" />
+          <rect x="12" width="6" height="100%" y="-100%" />
+          <rect x="18" width="6" height="100%" y="-100%" />
+          <rect x="24" width="6" height="100%" y="-100%" />
+          <rect x="30" width="6" height="100%" y="-100%" />
+          <rect x="36" width="6" height="100%" y="-100%" />
+          <rect x="42" width="6" height="100%" y="-100%" />
+          <rect x="48" width="6" height="100%" y="-100%" />
+          <rect x="54" width="6" height="100%" y="-100%" />
+          <rect x="60" width="6" height="100%" y="-100%" />
+          <rect x="66" width="6" height="100%" y="-100%" />
+          <rect x="72" width="6" height="100%" y="-100%" />
+          <rect x="78" width="6" height="100%" y="-100%" />
+          <rect x="84" width="6" height="100%" y="-100%" />
+          <rect x="90" width="6" height="100%" y="-100%" />
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%" />
+          <rect x="6" width="6" height="100%" y="100%" />
+          <rect x="12" width="6" height="100%" y="100%" />
+          <rect x="18" width="6" height="100%" y="100%" />
+          <rect x="24" width="6" height="100%" y="100%" />
+          <rect x="30" width="6" height="100%" y="100%" />
+          <rect x="36" width="6" height="100%" y="100%" />
+          <rect x="42" width="6" height="100%" y="100%" />
+          <rect x="48" width="6" height="100%" y="100%" />
+          <rect x="54" width="6" height="100%" y="100%" />
+          <rect x="60" width="6" height="100%" y="100%" />
+          <rect x="66" width="6" height="100%" y="100%" />
+          <rect x="72" width="6" height="100%" y="100%" />
+          <rect x="78" width="6" height="100%" y="100%" />
+          <rect x="84" width="6" height="100%" y="100%" />
+          <rect x="90" width="6" height="100%" y="100%" />
+        </g>
+      </svg>
+    </a>
+    <a href="contactMe.html">
+      <span class="label">Contact</span>
+      <box-icon class="icon" name="envelope" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%" />
+          <rect x="6" width="6" height="100%" y="-100%" />
+          <rect x="12" width="6" height="100%" y="-100%" />
+          <rect x="18" width="6" height="100%" y="-100%" />
+          <rect x="24" width="6" height="100%" y="-100%" />
+          <rect x="30" width="6" height="100%" y="-100%" />
+          <rect x="36" width="6" height="100%" y="-100%" />
+          <rect x="42" width="6" height="100%" y="-100%" />
+          <rect x="48" width="6" height="100%" y="-100%" />
+          <rect x="54" width="6" height="100%" y="-100%" />
+          <rect x="60" width="6" height="100%" y="-100%" />
+          <rect x="66" width="6" height="100%" y="-100%" />
+          <rect x="72" width="6" height="100%" y="-100%" />
+          <rect x="78" width="6" height="100%" y="-100%" />
+          <rect x="84" width="6" height="100%" y="-100%" />
+          <rect x="90" width="6" height="100%" y="-100%" />
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%" />
+          <rect x="6" width="6" height="100%" y="100%" />
+          <rect x="12" width="6" height="100%" y="100%" />
+          <rect x="18" width="6" height="100%" y="100%" />
+          <rect x="24" width="6" height="100%" y="100%" />
+          <rect x="30" width="6" height="100%" y="100%" />
+          <rect x="36" width="6" height="100%" y="100%" />
+          <rect x="42" width="6" height="100%" y="100%" />
+          <rect x="48" width="6" height="100%" y="100%" />
+          <rect x="54" width="6" height="100%" y="100%" />
+          <rect x="60" width="6" height="100%" y="100%" />
+          <rect x="66" width="6" height="100%" y="100%" />
+          <rect x="72" width="6" height="100%" y="100%" />
+          <rect x="78" width="6" height="100%" y="100%" />
+          <rect x="84" width="6" height="100%" y="100%" />
+          <rect x="90" width="6" height="100%" y="100%" />
+        </g>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- Floating text over the background animation -->
+  <div class="floating-text">
+    <h1 class="typing-title">About Me</h1>
+    <div class="typing-content" id="typingText"></div>
+    <div class="social-links">
+      <a href="#" target="_blank"><box-icon name='github' type='logo' ></box-icon></a>
+      <a href="#" target="_blank"><box-icon name='linkedin' type='logo' ></box-icon></a>
+      <a href="#" target="_blank"><box-icon name='twitter' type='logo' ></box-icon></a>
+    </div>
+  </div>
+
+  <div class="gradient-bg">
+    <svg 
+         viewBox="0 0 800 600"
+         xmlns="http://www.w3.org/2000/svg"
+         class="noiseBg">
+      <filter id="noiseFilterBg">
+        <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+      </filter>
+      <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" 
+            filter="url(#noiseFilterBg)" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" 
+                         values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" 
+                         result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="gradients-container">
+      <div class="g1"></div>
+      <div class="g2"></div>
+      <div class="g3"></div>
+      <div class="g4"></div>
+      <div class="g5"></div>
+      <div class="interactive"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Typing animation
+      const aboutContent = [
+        "Hello there! I'm a passionate computer science student currently pursuing my <span class='highlight'>Bachelor's degree at Memorial University</span> in St. John's, Canada.",
+        "Originally <span class='highlight'>born and raised in Saudi Arabia</span>, I made the exciting move to Canada to further my education and broaden my horizons.",
+        "",
+        "I'm proud to be <span class='highlight'>multilingual</span>, fluent in Arabic, Bengali, Urdu, Hindi, and English. Currently, I'm expanding my linguistic skills by learning French!",
+        "",
+        "Beyond academics, I'm actively involved in campus life as a member of several clubs including <span class='highlight'>BCC, Eastern Edge Robotics, Paradim Engineering, and MUN Quant Society</span>. I love volunteering and contributing to my community.",
+        "",
+        "When I'm not coding or studying, you can find me <span class='highlight'>playing football</span> or gaming online with friends. I believe in maintaining a healthy balance between work and play.",
+        "",
+        "Through <span class='highlight'>volunteering and personal projects,</span>, I'm gaining valuable industry experience while completing my degree. I'm excited about the opportunities ahead in the world of technology!",
+        "",
+        "Feel free to connect with me through the contact page or social links below. I'm always open to interesting conversations and new opportunities!"
+      ];
+
+      const typingText = document.getElementById('typingText');
+      let lineIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let currentLine = '';
+      let typingSpeed = 30;
+      let lineDelay = 1500;
+
+      function typeWriter() {
+        if (lineIndex < aboutContent.length) {
+          if (!isDeleting && charIndex <= aboutContent[lineIndex].length) {
+            // Typing
+            currentLine = aboutContent[lineIndex].substring(0, charIndex);
+            if (charIndex === 0) {
+              // Create new line element
+              const lineElement = document.createElement('div');
+              lineElement.className = 'typing-line';
+              lineElement.innerHTML = currentLine + '<span class="cursor"></span>';
+              typingText.appendChild(lineElement);
+            } else {
+              // Update existing line
+              const lines = document.querySelectorAll('.typing-line');
+              const currentLineElement = lines[lines.length - 1];
+              currentLineElement.innerHTML = currentLine + '<span class="cursor"></span>';
+              currentLineElement.style.opacity = 1;
+              
+              // Auto-scroll to bottom if needed
+              if (charIndex === aboutContent[lineIndex].length) {
+                document.querySelector('.floating-text').scrollTop = document.querySelector('.floating-text').scrollHeight;
+              }
+            }
+            charIndex++;
+            setTimeout(typeWriter, typingSpeed);
+          } else if (isDeleting && charIndex >= 0) {
+            // Deleting (not used in this implementation)
+            currentLine = aboutContent[lineIndex].substring(0, charIndex);
+            const lines = document.querySelectorAll('.typing-line');
+            const currentLineElement = lines[lines.length - 1];
+            currentLineElement.innerHTML = currentLine + '<span class="cursor"></span>';
+            charIndex--;
+            setTimeout(typeWriter, typingSpeed / 2);
+          } else {
+            // Move to next line
+            isDeleting = false;
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(typeWriter, lineDelay);
+          }
+        } else {
+          // Animation complete - remove cursor
+          const cursors = document.querySelectorAll('.cursor');
+          cursors.forEach(cursor => cursor.style.display = 'none');
+        }
+      }
+
+      // Start typing animation after a short delay
+      setTimeout(typeWriter, 1000);
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

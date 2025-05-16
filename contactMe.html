@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <!-- Boxicons -->
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <style>
+    :root {
+      /* Background gradient */
+      --color-bg1: rgb(10, 30, 10);
+      --color-bg2: rgb(30, 50, 30);
+      /* Greens for blobs */
+      --color1: 200, 255, 200;
+      --color2: 150, 255, 150;
+      --color3: 100, 255, 100;
+      --color4: 80, 220, 80;
+      --color5: 60, 200, 60;
+      /* Interactive highlight */
+      --color-interactive: 120, 255, 120;
+      --circle-size: 80%;
+      --blending: hard-light;
+    }
+
+    /* Ensure background & overlay sit behind content */
+    .gradient-bg,
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Contact section styling (on top) */
+    .contact-section {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .contact-section img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 4px solid rgba(var(--color1), 0.8);
+    }
+    .social-links {
+      margin: 1rem 0;
+    }
+    .social-links a {
+      margin: 0 0.5rem;
+      font-size: 2rem;
+      transition: transform 0.2s;
+      color: white;
+    }
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+    .contact-form {
+      margin-top: 2rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 0.5rem;
+    }
+    .contact-form button {
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background: rgba(var(--color4), 0.8);
+      color: #fff;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay for transition -->
+  <div class="overlay"></div>
+  
+  <!-- Navigation fixed at the top center -->
+  <nav>
+    <a href="index.html">
+      <span class="label">Home</span>
+      <box-icon class="icon" name="home" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">
+          <rect x="0" width="6" height="100%" y="-100%" />
+          <rect x="6" width="6" height="100%" y="-100%" />
+          <rect x="12" width="6" height="100%" y="-100%" />
+          <rect x="18" width="6" height="100%" y="-100%" />
+          <rect x="24" width="6" height="100%" y="-100%" />
+          <rect x="30" width="6" height="100%" y="-100%" />
+          <rect x="36" width="6" height="100%" y="-100%" />
+          <rect x="42" width="6" height="100%" y="-100%" />
+          <rect x="48" width="6" height="100%" y="-100%" />
+          <rect x="54" width="6" height="100%" y="-100%" />
+          <rect x="60" width="6" height="100%" y="-100%" />
+          <rect x="66" width="6" height="100%" y="-100%" />
+          <rect x="72" width="6" height="100%" y="-100%" />
+          <rect x="78" width="6" height="100%" y="-100%" />
+          <rect x="84" width="6" height="100%" y="-100%" />
+          <rect x="90" width="6" height="100%" y="-100%" />
+        </g>
+        <g class="blue">
+          <rect x="0" width="6" height="100%" y="100%" />
+          <rect x="6" width="6" height="100%" y="100%" />
+          <rect x="12" width="6" height="100%" y="100%" />
+          <rect x="18" width="6" height="100%" y="100%" />
+          <rect x="24" width="6" height="100%" y="100%" />
+          <rect x="30" width="6" height="100%" y="100%" />
+          <rect x="36" width="6" height="100%" y="100%" />
+          <rect x="42" width="6" height="100%" y="100%" />
+          <rect x="48" width="6" height="100%" y="100%" />
+          <rect x="54" width="6" height="100%" y="100%" />
+          <rect x="60" width="6" height="100%" y="100%" />
+          <rect x="66" width="6" height="100%" y="100%" />
+          <rect x="72" width="6" height="100%" y="100%" />
+          <rect x="78" width="6" height="100%" y="100%" />
+          <rect x="84" width="6" height="100%" y="100%" />
+          <rect x="90" width="6" height="100%" y="100%" />
+        </g>
+      </svg>
+    </a>
+    <a href="projects.html">
+      <span class="label">Projects</span>
+      <box-icon class="icon" name="code-alt" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">[...]</g>
+        <g class="blue">[...]</g>
+      </svg>
+    </a>
+    <a href="aboutMe.html">
+      <span class="label">About</span>
+      <box-icon class="icon" name="user-circle" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">[...]</g>
+        <g class="blue">[...]</g>
+      </svg>
+    </a>
+    <a href="contactMe.html">
+      <span class="label">Contact</span>
+      <box-icon class="icon" name="envelope" color="white" size="50px"></box-icon>
+      <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <g class="pink">[...]</g>
+        <g class="blue">[...]</g>
+      </svg>
+    </a>
+  </nav>
+  
+  <!-- Gradient background + goo filter -->
+  <div class="gradient-bg">
+    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="noiseBg">
+      <filter id="noiseFilterBg">
+        <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+      </filter>
+      <rect width="100%" height="100%" preserveAspectRatio="xMidYMid meet" filter="url(#noiseFilterBg)" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="gradients-container">
+      <div class="g1"></div><div class="g2"></div><div class="g3"></div><div class="g4"></div><div class="g5"></div><div class="interactive"></div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <img src="path/to/your-photo.jpg" alt="Your Name">
+    <h2>Get in Touch</h2>
+    <p>I’d love to hear from you—whether it’s a project idea, a question, or just to say hello!</p>
+    <div class="social-links">
+      <a href="mailto:your.email@gmail.com"><box-icon name="envelope" type="solid"></box-icon></a>
+      <a href="https://github.com/yourusername" target="_blank"><box-icon name="github" type="logo"></box-icon></a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank"><box-icon name="linkedin-square" type="logo"></box-icon></a>
+    </div>
+    <form class="contact-form" action="mailto:your.email@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="5" placeholder="Your message…" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
