@@ -271,64 +271,64 @@
         <p>Educational Platform</p>
       </div>
       <!-- Project 2 -->
-      <div class="project-card" data-details="Full-stack e-commerce platform with payment gateway integration." data-tech="React, Node.js, MongoDB, Stripe" data-features="User authentication, Admin dashboard, Product search">
+      <div class="project-card" data-details="An interactive learning platform for Robotics" data-tech="HTML, CSS, ThreeJS, Javascript" data-features="3D rotation matrices, Interactive 3D Modelling, Visualizing C-Space ">
         <h2>IntuitiveRobo</h2>
         <p>Educational Platform</p>
       </div>
       <!-- Project 3 -->
-      <div class="project-card" data-details="Realtime chat application with endtoend encryption." data-tech="Socket.io, React, Node.js" data-features="Message encryption, File sharing, Group chats">
+      <div class="project-card" data-details="Platform for interactive learning courses" data-tech="AWS, GraphQL, React, HTML, CSS, Javascript" data-features="Curriculums, Tools for Learning, Keeping tracking">
         <h2>SNAcademy</h2>
         <p>Educational Platform</p>
       </div>
       <!-- Project 4 -->
-      <div class="project-card" data-details="AI-powered recommendation system for e-learning content." data-tech="Python, TensorFlow, Flask" data-features="Machine learning model, REST API, User analytics">
+      <div class="project-card" data-details="Self Development Social Media Platform" data-tech="HTML, CSS, Javascript" data-features="Levelling Up, Tasks, Timer, AI Assistance">
         <h2>Leveling</h2>
         <p>Social Media Platform</p>
       </div>
       <!-- Project 5 -->
-      <div class="project-card" data-details="Fitness tracking application with wearable device integration." data-tech="React Native, Firebase, Bluetooth API" data-features="Step counter, Heart rate monitoring, Social sharing">
+      <div class="project-card" data-details="My Own Portfolio inspired by trending designs from codepen" data-tech="HTML. CSS. Javascript" data-features="Hovering Animation, Enlargement of Logos, Scroll Animation">
         <h2>Portfolio</h2>
         <p>Front End Design</p>
       </div>
       <!-- Project 6 -->
       <div class="project-card" 
-           data-details="Blockchain-based document verification system."
-           data-tech="Solidity, Ethereum, Web3.js"
-           data-features="Smart contracts, IPFS storage, PDF validation">
-        <h2>Project 6</h2>
-        <p>Blockchain Verifier</p>
+           data-details="Dashboard for stocks"
+           data-tech="yfinance, Nasdaq Data Link, Python, Plotly, Streamlit, Pandas"
+           data-features="Seaerch by stock symbol, Line Chart, RSI Chart, Data Table">
+        <h2>Stock Dashboard</h2>
+        <p>Nasdaq Datalink</p>
       </div>
 
       <!-- Project 7 -->
-      <div class="project-card" datadetails="AR application for virtual home decoration." datatech="Unity, ARKit, Swift" data-air="3D object placement, Real-time rendering, Product catalog">
-        <h2>Project 7</h2>
-        <p>AR Interior Design</p>
+      <div class="project-card" data-details="A Board Game" data-tech="Java, Github" data-features="4 players, CPU player, Colour Vision modes">
+        <h2>Kivi Game</h2>
+        <p>A Board Game</p>
       </div>
       <!-- Project 8 -->
       <div class="project-card" 
-           data-details="IoT-based smart agriculture monitoring system."
-           data-tech="Raspberry Pi, Python, AWS IoT"
-           data-features="Soil sensors, Weather data, Automated irrigation">
-        <h2>Project 8</h2>
-        <p>Smart Farming System</p>
+           data-details="Visualizing Data Structrues & Algoirthms"
+           data-tech="HTML. CSS, Javascsript"
+           data-features="Visualization, Data structures, Algorithms">
+        <h2>Interactive Coding</h2>
+        <p>Coding Interactively</p>
       </div>
 
       <!-- Project 9 -->
       <div class="project-card" 
-           data-details="Machine learning model for predictive maintenance."
-           data-tech="Python, Scikit-learn, Docker"
-           data-features="Anomaly detection, Predictive alerts, Data visualization">
-        <h2>Project 9</h2>
-        <p>Predictive Maintenance AI</p>
+           data-details="AI bot"
+           data-tech="HTML, CSS, Javascript, OpenAI"
+           data-features="GenAI">
+        <h2>AI bot</h2>
+        <p>OpenAI API</p>
       </div>
 
       <!-- Project 10 -->
       <div class="project-card" 
-           data-details="Cloud-native video conferencing platform."
-           data-tech="WebRTC, Kubernetes, Node.js"
-           data-features="Video recording, Screen sharing, Breakout rooms">
-        <h2>Project 10</h2>
-        <p>Video Conferencing System</p>
+           data-details="A 4 wheeled IoT-based smart vehicle (Tank)"
+           data-tech="Microcontrollers, ESP32, ROS, C++"
+           data-features="Video recording, Autonomous">
+        <h2>M3 Tank Project</h2>
+        <p>Start up project</p>
       </div>
     </div>
   </div>
@@ -346,27 +346,54 @@
       const overlay = document.querySelector('.modal-overlay');
       const closeBtn = document.querySelector('.modal-close');
       cards.forEach(card => {
-        card.addEventListener('click', () => {
-          const title = card.querySelector('h2').textContent;
-          const desc = card.querySelector('p').textContent;
-          const details = card.dataset.details;
-          const tech = card.dataset.tech.split(', ');
-          const features = card.dataset.features.split(', ');
-          content.innerHTML = `
-            <h2>${title}</h2>
-            <p>${desc}</p>
-            <p>${details}</p>
-            <div class="modal-columns">
-              <div class="techsection"><h3>Technologies Used</h3><ul>${tech.map(item => `<li>${item}</li>`).join('')}</ul></div>
-              <div class=\"featuressection\"><h3>Key Features</h3><ul>${features.map(feat => `<li>${feat}</li>`).join('')}</ul></div>
-            </div>
-            <div class="visit-site"><a href="https://intuitivecs.ca" target="_blank" rel="noopener">Visit site</a></div>
-          `;
-          overlay.classList.add('active');
-          modal.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        });
+      card.addEventListener('click', () => {
+        const title = card.querySelector('h2').textContent;
+        const desc = card.querySelector('p').textContent;
+        const details = card.dataset.details;
+        const tech = card.dataset.tech.split(', ');
+        const features = card.dataset.features.split(', ');
+
+        // Determine site link based on project title
+        let link = '';
+        if (title === 'IntuitiveCS') {
+          link = 'https://intuitivecs.ca';
+        } else if (title === 'IntuitiveRobo') {
+          link = 'https://mulaxn.github.io/IntuitiveRobotics/';
+        } else if (title === 'SNAcademy') {
+          link = 'http://snacademy-website.s3-website-us-east-1.amazonaws.com/login';
+        } else if (title === 'Leveling') {
+          link = 'https://github.com/mulaxn/Leveling';
+        } else if (title === 'Portfolio') {
+          link = 'https://github.com/mulaxn/Portfolio';
+        } else if (title === 'Stock Dashboard') {
+          link = 'https://github.com/mulaxn/stock_dashboard';
+        } else if (title === 'Kivi Game') {
+          link = 'https://github.com/mulaxn/kivi';
+        } else if (title === 'Interactive Coding') {
+          link = 'https://github.com/mulaxn/interactiveCoding';
+        } else if (title === 'AI bot') {
+          link = 'https://github.com/mulaxn/GPTApi';
+        } else if (title === 'M3 Tank Project') {
+          link = 'https://github.com/mulaxn/m3-abrams-tank-project';
+        }
+
+        content.innerHTML = `
+          <h2>${title}</h2>
+          <p>${desc}</p>
+          <p>${details}</p>
+          <div class="modal-columns">
+            <div class="tech-section"><h3>Technologies Used</h3><ul>${tech.map(item => `<li>${item}</li>`).join('')}</ul></div>
+            <div class="features-section"><h3>Key Features</h3><ul>${features.map(feat => `<li>${feat}</li>`).join('')}</ul></div>
+          </div>
+          ${link ? `<div class="visit-site"><a href="${link}" target="_blank" rel="noopener">Visit site</a></div>` : ''}
+        `;
+
+        overlay.classList.add('active');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       });
+    });
+
       const closeModal = () => { modal.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = 'auto'; };
       overlay.addEventListener('click', closeModal);
       closeBtn.addEventListener('click', closeModal);

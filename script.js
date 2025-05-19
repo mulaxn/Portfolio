@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tgY = event.clientY;
   });
   move();
-  
+
   // NavigationEffect for nav interactions
   class NavigationEffect {
     constructor(navigation) {
@@ -33,12 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
           if (targetUrl) {
             setTimeout(() => {
               window.location = targetUrl;
-            }, 1000); // Adjust delay as needed
+            }, 1000);
           }
         });
       });
     }
-  
+
     handleCurrent(current) {
       this.current = current;
       this.current.classList.toggle("active");
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         overwrite: true,
       });
     }
-  
+
     handlePrevious() {
       this.previous = document.querySelector("nav a.active");
       if (this.previous) {
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     }
-  
+
     getNodes(item) {
       return [
         gsap.utils.selector(item)(".blue rect"),
@@ -88,6 +88,38 @@ document.addEventListener("DOMContentLoaded", () => {
       ];
     }
   }
-  
+
   new NavigationEffect(document.querySelector("nav"));
+
+  // ✅ Typing Animation on Scroll
+  gsap.registerPlugin(ScrollTrigger);
+
+  const aboutText = `I'm 24 years old. Outside of programming, I enjoy gaming to stay connected with my friends around the world. I also love hiking, playing soccer, and experimenting in the kitchen. One quote I strive to live by is: 
+"No amount of money ever bought a second of time." by Tony Stark.
+Here’s a picture of me lying down at the highest point of the Gros Morne Mountain Trail.`;
+
+  let index = 0;
+  let hasTyped = false;
+
+  function typeText() {
+    const typingEl = document.getElementById("typing-text");
+    if (!typingEl) return;
+    if (index < aboutText.length) {
+      typingEl.textContent += aboutText.charAt(index);
+      index++;
+      setTimeout(typeText, 40);
+    }
+  }
+
+  ScrollTrigger.create({
+    trigger: "#typing-text",
+    start: "top 80%",
+    once: true,
+    onEnter: () => {
+      if (!hasTyped) {
+        hasTyped = true;
+        typeText();
+      }
+    }
+  });
 });
